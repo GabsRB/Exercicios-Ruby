@@ -1,5 +1,0 @@
-# Método do tipo interador, que repete o número de vezes o bloco associado
-# 10 é o limite superior
-10.times{ |i| puts  i.to_s + " - "}
-# é uma variável, assim, o to_s converte ela para string com a concatenação " - "
-# puts imprime o valor/resultado
