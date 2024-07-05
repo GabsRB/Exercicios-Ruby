@@ -21,33 +21,33 @@ loop do
     # Lê a entrada e converte para float
     valorC = gets.chomp.to_f
 
-# Condição que verifica se a soma de dois lados é maior que o terceiro lado
-if (valorA + valorB > valorC) && (valorA + valorC > valorB) && (valorB + valorC > valorA)
-    # Condição que verifica se os valores formam um triângulo equilátero
-    if (valorA == valorB and valorA == valorC)
-        # Caso a condição seja verdadeira, exibe os valores e que podem formar um triângulo equilátero
-        puts "Os valores #{valorA}, #{valorB} e #{valorC} formam um triângulo equilátero"
-    # Caso não seja a primeira condição anterior, passa para essa condição que verifica se os valores formam um triângulo isóceles
-    elsif (valorA == valorB or  valorA == valorC or valorB == valorC) 
-        # Caso a condição seja verdadeira, exibe os valores e que podem formar um triângulo isóceles
-        puts "Os valores #{valorA}, #{valorB} e #{valorC} formam um triângulo isóceles"
-    elsif
-        # Caso não for nehuma das condição, exibe os valores e que podem formar um triângulo escaleno
-        puts "Os valores #{valorA}, #{valorB} e #{valorC} formam um triângulo escaleno"
+    # Condição que verifica se a soma de dois lados é maior que o terceiro lado
+    if (valorA + valorB > valorC) && (valorA + valorC > valorB) && (valorB + valorC > valorA)
+        # Se a condição for verdadeira, verifica o tipo de triângulo
+        if (valorA == valorB && valorB == valorC)
+            # Caso a condição seja verdadeira, exibe os valores e que podem formar um triângulo equilátero
+            puts "Os valores #{valorA}, #{valorB} e #{valorC} formam um triângulo equilátero"
+        # Caso não seja a primeira condição anterior, passa para essa condição que verifica se os valores formam um triângulo isóceles    
+        elsif (valorA == valorB || valorA == valorC || valorB == valorC)
+            # Caso a condição seja verdadeira, exibe os valores e que podem formar um triângulo isóceles
+            puts "Os valores #{valorA}, #{valorB} e #{valorC} formam um triângulo isóceles"
+        else
+            # Caso não for nehuma das condição, exibe os valores e que podem formar um triângulo escaleno
+            puts "Os valores #{valorA}, #{valorB} e #{valorC} formam um triângulo escaleno"
+        end
+    else
+        # Se a condição for falsa, exibe que os valores não podem formar um triângulo
+        puts "Os valores #{valorA}, #{valorB} e #{valorC} não formam um triângulo"
     end
-else 
-    # Se a condição for falsa, exibe que os valores não podem formar um triângulo
-    puts "Os valores #{valorA}, #{valorB} e #{valorC} não formam um triângulo"
-end 
 
-# Solicita um resposta com sim ou não
-puts "\nDeseja continuar? (S/N)"
-# Armazena a resposta e converte para maiuscula, caso seja minuscula a resposta
-resposta = gets.chomp.upcase
+    # Solicita um resposta com sim ou não
+    puts "\nDeseja continuar? (S/N)"
+    # Armazena a resposta e converte para maiuscula, caso seja minuscula a resposta
+    resposta = gets.chomp.upcase
 
-# Interrompe a loop caso a resposta for não
-break if resposta == "N"
-end
+    # Interrompe a loop caso a resposta for não
+    break if resposta == "N"
+    end
 
-# Apos encerrar o loop, mostra a mensagem 
-puts "\nOkay. Programa Encerrado!"
+    # Apos encerrar o loop, mostra a mensagem 
+    puts "\nOkay. Programa Encerrado!"
