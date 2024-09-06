@@ -10,7 +10,5 @@ def create
       params[:accommodation]["availability(3i)"].to_i
     )
     @accommodation.availability = availability
-  end
-
-  # Resto do código...
+ end
 end
