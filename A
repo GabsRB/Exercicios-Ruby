@@ -1,39 +1,16 @@
-def index
-  @accommodations = current_user.accommodations
-end
 
-<div class="accommodations-grid">
-  <% @accommodations.each do |accommodation| %>
-    <div class="accommodation-card">
-      <%= link_to accommodation_path(accommodation) do %>
-        <div class="accommodation-image">
-          <%= image_tag accommodation.photo_url if accommodation.photo.attached? %>
-        </div>
-        <div class="accommodation-title">
-          <h3><%= accommodation.title %></h3>
-        </div>
-        <div class="accommodation-availability">
-          <p><%= accommodation.available_dates %></p>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
 
-def show
-  @accommodation = Accommodation.find(params[:id])
-end
-
-<h1><%= @accommodation.title %></h1>
-<div class="accommodation-detail">
-  <div>
-    <%= image_tag @accommodation.photo_url if @accommodation.photo.attached? %>
-  </div>
-  <div>
-    <p><strong>Descrição:</strong> <%= @accommodation.description %></p>
-    <p><strong>Endereço:</strong> <%= @accommodation.address %></p>
-    <p><strong>Disponibilidade:</strong> <%= @accommodation.available_dates %></p>
-    <p><strong>Comodidades:</strong> <%= @accommodation.amenities.join(', ') %></p>
+def create
+  @accommodation = Accommodation.new(accommodation_params)
   
-  </div>
-</div>
+  if params[:accommodation][:availability]
+    availability = Date.new(
+      params[:accommodation]["availability(1i)"].to_i,
+      params[:accommodation]["availability(2i)"].to_i,
+      params[:accommodation]["availability(3i)"].to_i
+    )
+    @accommodation.availability = availability
+  end
+
+  # Resto do código...
+end
