@@ -12,3 +12,22 @@ def create
     @accommodation.availability = availability
  end
 end
+
+  @accommodation = Accommodation.new(accommodation_params)
+  @accommodation.current_step = params[:accommodation][:current_step]
+
+  if params[:previous_button]
+    @accommodation.previous_step
+    render 'new'
+  elsif @accommodation.valid? && @accommodation.next_step
+    session[:accommodation_step] = @accommodation.current_step
+    if @accommodation.last_step?
+      @accommodation.save
+      session[:accommodation_step] = nil
+      redirect_to anfitriao_dashboard_path, notice: 'Acomodação criada com sucesso!'
+    else
+      render 'new'
+    end
+  else
+    render 'new'
+  end
